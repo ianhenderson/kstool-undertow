@@ -1,1 +1,1 @@
-java -Dserver.port=$PORT -cp target/classes/ co.ian.kstool.App
+java -Dserver.port=$PORT -cp target/classes:target/dependency/* co.ian.kstool.App
