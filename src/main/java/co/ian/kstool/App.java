@@ -1,7 +1,8 @@
 package co.ian.kstool;
 
 import io.undertow.Undertow;
-import io.undertow.server.*;
+import io.undertow.server.HttpHandler;
+import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
 
 public class App {
@@ -41,7 +42,8 @@ public class App {
     System.out.println("Listening on port: " + port);
     System.out.println("Listening on hostname: " + hostname);
 
-    Undertow server = Undertow.builder().addHttpListener(port, hostname)
+    Undertow server = Undertow.builder()
+      .addHttpListener(port, hostname)
       .setHandler(new HttpHandler() {
         public void handleRequest(final HttpServerExchange exchange) throws Exception {
           exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
